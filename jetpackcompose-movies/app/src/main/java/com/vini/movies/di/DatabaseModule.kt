@@ -2,7 +2,6 @@ package com.vini.movies.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.vini.movies.domain.data.local.MovieDatabase
 import com.vini.movies.util.Constants.MOVIE_DATABASE
 import dagger.Module
