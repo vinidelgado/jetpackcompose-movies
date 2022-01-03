@@ -1,4 +1,4 @@
-package com.vini.movies.presentation.screens
+package com.vini.movies.presentation.screens.splash
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.core.Animatable
@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.vini.movies.R
 import com.vini.movies.ui.theme.Black700
+import com.vini.movies.ui.theme.Purple200
 import com.vini.movies.ui.theme.Purple500
 import com.vini.movies.ui.theme.Purple700
 import com.vini.movies.ui.theme.White700
@@ -57,7 +58,7 @@ fun Splash(alpha: Float) {
         Brush.verticalGradient(listOf(Purple700, Purple500))
     }
     val logoTint = if (isSystemInDarkTheme()) {
-        Purple500
+        Purple200
     } else {
         White700
     }

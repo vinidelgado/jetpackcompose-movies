@@ -11,10 +11,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.vini.movies.navigation.SetupNavGraph
 import com.vini.movies.ui.theme.MoviesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalPagerApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
