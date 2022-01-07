@@ -43,3 +43,11 @@ val Colors.welcomeScreenButtonBackgroundColor
 val Colors.welcomeScreenButtonTextColor
     @Composable
     get() = if (isLight) White300 else White300
+
+val Colors.homeScreenTopAppBarBackgroundColor
+    @Composable
+    get() = if (isLight) Purple500 else Black700
+
+val Colors.homeScreenTopAppBarContentColor
+    @Composable
+    get() = if (isLight) White300 else White300

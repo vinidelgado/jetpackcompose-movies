@@ -1,5 +1,6 @@
 package com.vini.movies.navigation
 
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -12,6 +13,7 @@ import com.vini.movies.presentation.screens.splash.SplashScreen
 import com.vini.movies.presentation.screens.welcome.WelcomeScreen
 import com.vini.movies.util.Constants.DETAILS_ARGUMENT_KEY
 
+@ExperimentalMaterial3Api
 @ExperimentalPagerApi
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
