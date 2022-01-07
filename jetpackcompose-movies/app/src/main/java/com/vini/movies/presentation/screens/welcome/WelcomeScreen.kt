@@ -23,6 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -31,6 +32,7 @@ import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.vini.movies.R
 import com.vini.movies.domain.model.OnboardingPage
+import com.vini.movies.navigation.Screen
 import com.vini.movies.ui.theme.Black300
 import com.vini.movies.ui.theme.EXTRA_LARGE_PADDING
 import com.vini.movies.ui.theme.PAGING_INDICATOR
@@ -43,11 +45,15 @@ import com.vini.movies.ui.theme.welcomeScreenButtonTextColor
 import com.vini.movies.ui.theme.welcomeScreenDescriptionColor
 import com.vini.movies.ui.theme.welcomeScreenInactiveIndicatorColor
 import com.vini.movies.ui.theme.welcomeScreenTitleColor
+import com.vini.movies.util.Constants.LAST_ONBOARDING_PAGE
 import com.vini.movies.util.Constants.ONBOARDING_PAGE_COUNT
 
 @ExperimentalPagerApi
 @Composable
-fun WelcomeScreen(navController: NavHostController) {
+fun WelcomeScreen(
+    navController: NavHostController,
+    welcomeViewModel: WelcomeViewModel = hiltViewModel()
+) {
     val pages = listOf(
         OnboardingPage.First,
         OnboardingPage.Second,
@@ -85,7 +91,9 @@ fun WelcomeScreen(navController: NavHostController) {
             modifier = Modifier.weight(1f),
             pageState = pageState
         ) {
-
+            navController.popBackStack()
+            navController.navigate(Screen.Home.route)
+            welcomeViewModel.savingOnboardingScreen(completed = true)
         }
     }
 }
@@ -141,13 +149,15 @@ fun FinishButton(
     ) {
         AnimatedVisibility(
             modifier = Modifier.fillMaxWidth(),
-            visible = pageState.currentPage == 2
+            visible = pageState.currentPage == LAST_ONBOARDING_PAGE
         ) {
-            Button(onClick = onClick,
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = MaterialTheme.colors.welcomeScreenButtonBackgroundColor,
-                contentColor = MaterialTheme.colors.welcomeScreenButtonTextColor,
-            )) {
+            Button(
+                onClick = onClick,
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = MaterialTheme.colors.welcomeScreenButtonBackgroundColor,
+                    contentColor = MaterialTheme.colors.welcomeScreenButtonTextColor,
+                )
+            ) {
                 Text(text = "Finish")
             }
         }

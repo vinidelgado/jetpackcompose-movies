@@ -56,11 +56,14 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation "androidx.compose.ui:ui:1.0.5"
-    implementation "androidx.compose.material:material:1.0.5"
+//    implementation "androidx.compose.material:material:1.0.5"
     implementation "androidx.compose.ui:ui-tooling-preview:1.0.5"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
     implementation 'androidx.activity:activity-compose:1.4.0'
     implementation 'androidx.compose.ui:ui-tooling:1.1.0-rc01'
+
+    // Material3
+    implementation "androidx.compose.material3:material3:1.0.0-alpha02"
 
     // Compose Navigation
     implementation "androidx.navigation:navigation-compose:2.4.0-rc01"

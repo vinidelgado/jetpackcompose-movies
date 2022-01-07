@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.vini.movies.presentation.screens.home.HomeScreen
 import com.vini.movies.presentation.screens.splash.SplashScreen
 import com.vini.movies.presentation.screens.welcome.WelcomeScreen
 import com.vini.movies.util.Constants.DETAILS_ARGUMENT_KEY
@@ -16,8 +17,7 @@ import com.vini.movies.util.Constants.DETAILS_ARGUMENT_KEY
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-//        startDestination = Screen.Splash.route
-        startDestination = Screen.Welcome.route
+        startDestination = Screen.Splash.route
     ) {
         composable(route = Screen.Splash.route) {
             SplashScreen(navController = navController)
@@ -26,7 +26,7 @@ fun SetupNavGraph(navController: NavHostController) {
             WelcomeScreen(navController = navController)
         }
         composable(route = Screen.Home.route) {
-
+            HomeScreen()
         }
         composable(
             route = Screen.Detail.route,

@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,8 +24,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.vini.movies.R
+import com.vini.movies.navigation.Screen
 import com.vini.movies.ui.theme.Black700
 import com.vini.movies.ui.theme.Purple200
 import com.vini.movies.ui.theme.Purple500
@@ -31,7 +35,12 @@ import com.vini.movies.ui.theme.Purple700
 import com.vini.movies.ui.theme.White700
 
 @Composable
-fun SplashScreen(navController: NavHostController) {
+fun SplashScreen(
+    navController: NavHostController,
+    splashViewModel: SplashViewModel = hiltViewModel()
+) {
+
+    val onboardingCompleted by splashViewModel.onboardingCompleted.collectAsState()
 
     val fade = remember {
         Animatable(initialValue = 0f)
@@ -45,6 +54,12 @@ fun SplashScreen(navController: NavHostController) {
                 easing = FastOutLinearInEasing
             )
         )
+        navController.popBackStack()
+        if (onboardingCompleted) {
+            navController.navigate(Screen.Home.route)
+        } else {
+            navController.navigate(Screen.Welcome.route)
+        }
     }
 
     Splash(alpha = fade.value)
