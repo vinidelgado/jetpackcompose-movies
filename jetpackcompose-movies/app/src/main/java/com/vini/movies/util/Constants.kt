@@ -11,4 +11,6 @@ object Constants {
 
     const val ONBOARDING_PAGE_COUNT = 3
     const val LAST_ONBOARDING_PAGE = 2
+
+    const val BASE_URL = "https://api.themoviedb.org/3"
 }
