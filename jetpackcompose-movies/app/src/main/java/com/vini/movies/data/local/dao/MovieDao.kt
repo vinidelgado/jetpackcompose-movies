@@ -1,4 +1,4 @@
-package com.vini.movies.domain.data.local.dao
+package com.vini.movies.data.local.dao
 
 import androidx.paging.PagingSource
 import androidx.room.Dao

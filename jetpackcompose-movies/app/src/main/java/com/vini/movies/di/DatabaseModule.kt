@@ -2,7 +2,8 @@ package com.vini.movies.di
 
 import android.content.Context
 import androidx.room.Room
-import com.vini.movies.domain.data.local.MovieDatabase
+import androidx.room.RoomDatabase
+import com.vini.movies.data.local.MovieDatabase
 import com.vini.movies.util.Constants.MOVIE_DATABASE
 import dagger.Module
 import dagger.Provides
@@ -14,13 +15,16 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
+
     @Provides
     @Singleton
     fun provideDatabase(
         @ApplicationContext context: Context
-    ) = Room.databaseBuilder(
-        context,
-        MovieDatabase::class.java,
-        MOVIE_DATABASE
-    ).build()
+    ): MovieDatabase {
+        return Room.databaseBuilder(
+            context,
+            MovieDatabase::class.java,
+            MOVIE_DATABASE
+        ).build()
+    }
 }
