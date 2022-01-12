@@ -28,23 +28,21 @@ class MovieRemoteMediator @Inject constructor(
                     val remoteKeys = getRemoteKeyClosestCurrentPosition(state)
                     remoteKeys?.nextPage?.minus(1) ?: 1
                 }
-                LoadType.APPEND -> {
-                    val remoteKeys = getRemoteKeyForLastItem(state)
-                    val nextPage = remoteKeys?.nextPage
-                        ?: MediatorResult.Success(
-                            endOfPaginationReached = remoteKeys != null
-                        )
-//                    nextPage
-                    1
-                }
                 LoadType.PREPEND -> {
                     val remoteKeys = getRemoteKeyForFirstItem(state)
                     val prevPage = remoteKeys?.prevPage
-                        ?: MediatorResult.Success(
+                        ?: return MediatorResult.Success(
                             endOfPaginationReached = remoteKeys != null
                         )
-//                    prevPage
-                    1
+                    prevPage
+                }
+                LoadType.APPEND -> {
+                    val remoteKeys = getRemoteKeyForLastItem(state)
+                    val nextPage = remoteKeys?.nextPage
+                        ?: return MediatorResult.Success(
+                            endOfPaginationReached = remoteKeys != null
+                        )
+                    nextPage
                 }
             }
             val response = movieApi.getLatestMovies(
@@ -60,7 +58,7 @@ class MovieRemoteMediator @Inject constructor(
                         movieRemoteKeysDao.deleteAllRemoteKeys()
                     }
                     val prevPage = response.page
-                    val nextPage = if (prevPage < response.totalPages - 1) prevPage + 1 else -1
+                    val nextPage = if (prevPage < response.total_pages - 1) prevPage + 1 else -1
                     val keys = response.results.map {
                         MovieRemoteKeys(
                             id = it.id,
@@ -72,7 +70,7 @@ class MovieRemoteMediator @Inject constructor(
                     movieDao.addMovie(movies = response.results)
                 }
             }
-            val endPaginationReached = response.page >= response.totalPages - 1
+            val endPaginationReached = response.page >= response.total_pages - 1
             MediatorResult.Success(endOfPaginationReached = endPaginationReached)
         } catch (exception: Exception) {
             return MediatorResult.Error(exception)
