@@ -1,5 +1,6 @@
 package com.vini.movies.data.paggingsource
 
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -45,6 +46,7 @@ class MovieRemoteMediator @Inject constructor(
                     nextPage
                 }
             }
+            Log.d("Page Call Api", page.toString())
             val response = movieApi.getLatestMovies(
                 apiKey = "531e23ae1335c830faeef060e80f9078",
                 page = page,
@@ -58,7 +60,7 @@ class MovieRemoteMediator @Inject constructor(
                         movieRemoteKeysDao.deleteAllRemoteKeys()
                     }
                     val prevPage = response.page
-                    val nextPage = if (prevPage < response.total_pages - 1) prevPage + 1 else -1
+                    val nextPage = if (prevPage < response.total_pages - 1) prevPage + 2 else -1
                     val keys = response.results.map {
                         MovieRemoteKeys(
                             id = it.id,
@@ -94,10 +96,9 @@ class MovieRemoteMediator @Inject constructor(
     }
 
     private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Movie>): MovieRemoteKeys? {
-        return state.pages.lastOrNull() {
-            it.data.isNullOrEmpty()
-        }?.data?.lastOrNull()?.let { movie ->
-            movieRemoteKeysDao.getRemoteKeys(movieId = movie.id)
-        }
+        return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
+            ?.let { movie ->
+                movieRemoteKeysDao.getRemoteKeys(movieId = movie.id)
+            }
     }
 }

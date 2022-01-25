@@ -104,7 +104,7 @@ fun MovieItem(
 
     Box(
         modifier = Modifier
-            .height(400.dp)
+            .height(110.dp)
             .clickable {
                 navController.navigate(Screen.Detail.passMovieId(movieId = movie.id))
             },

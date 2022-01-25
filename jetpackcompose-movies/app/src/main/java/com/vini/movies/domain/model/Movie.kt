@@ -11,9 +11,9 @@ data class Movie(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
     val adult: Boolean,
-    val backdrop_path: String,
+    val backdrop_path: String? = "",
     val original_title: String,
     val popularity: Float,
-    val poster_path: String,
+    val poster_path: String? = "",
     val title: String,
 )
