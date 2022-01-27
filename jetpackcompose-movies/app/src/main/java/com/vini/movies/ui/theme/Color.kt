@@ -20,6 +20,10 @@ val White700 = Color(0xFFFFFFFF)
 
 val LightGray = Color(0xFFD8D8D8)
 
+val ShimmerLightGray = Color(0xFFF1F1F1)
+val ShimmerMediumGray = Color(0xFFE3E3E3)
+val ShimmerDarkGray = Color(0xFF1D1D1D)
+
 val Colors.welcomeScreenTitleColor
     @Composable
     get() = if (isLight) White else Black

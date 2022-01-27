@@ -9,7 +9,7 @@ import com.vini.movies.domain.model.Movie
 
 @Dao
 interface MovieDao {
-    @Query("Select * FROM movie_table ORDER BY id ASC")
+    @Query("Select * FROM movie_table")
     fun getAllMovies():PagingSource<Int,Movie>
 
     @Query("Select * FROM movie_table WHERE id=:movieId")

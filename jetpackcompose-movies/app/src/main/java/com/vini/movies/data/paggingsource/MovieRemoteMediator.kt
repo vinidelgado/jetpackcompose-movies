@@ -46,11 +46,10 @@ class MovieRemoteMediator @Inject constructor(
                     nextPage
                 }
             }
-            Log.d("Page Call Api", page.toString())
             val response = movieApi.getLatestMovies(
                 apiKey = "531e23ae1335c830faeef060e80f9078",
                 page = page,
-                language = "en-US",
+                language = "pt-BR",
                 region = null
             )
             if (response.results.isNotEmpty()) {
