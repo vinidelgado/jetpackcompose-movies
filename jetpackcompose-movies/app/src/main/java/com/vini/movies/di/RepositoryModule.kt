@@ -1,10 +1,11 @@
 package com.vini.movies.di
 
 import android.content.Context
-import com.vini.movies.domain.pref.DataStoreOperationsImpl
+import com.vini.movies.data.repository.DataStoreOperationsImpl
+import com.vini.movies.data.repository.Repository
 import com.vini.movies.domain.repository.DataStoreOperations
-import com.vini.movies.domain.repository.Repository
 import com.vini.movies.domain.use_cases.UseCases
+import com.vini.movies.domain.use_cases.all_movies.GetAllMoviesUseCase
 import com.vini.movies.domain.use_cases.read_onboarding.ReadOnboardingUseCase
 import com.vini.movies.domain.use_cases.save_onboarding.SaveOnboardingUseCase
 import dagger.Module
@@ -28,7 +29,8 @@ object RepositoryModule {
     fun provideUseCases(repository: Repository): UseCases {
         return UseCases(
             saveOnboardingUseCase = SaveOnboardingUseCase(repository = repository),
-            readOnboardingUseCase = ReadOnboardingUseCase(repository = repository)
+            readOnboardingUseCase = ReadOnboardingUseCase(repository = repository),
+            getAllMoviesUseCase = GetAllMoviesUseCase(repository = repository),
         )
     }
 }

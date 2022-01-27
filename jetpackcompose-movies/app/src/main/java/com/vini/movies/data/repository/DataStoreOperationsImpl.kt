@@ -1,4 +1,4 @@
-package com.vini.movies.domain.pref
+package com.vini.movies.data.repository
 
 import android.content.Context
 import androidx.datastore.core.DataStore

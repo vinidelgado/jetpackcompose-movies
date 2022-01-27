@@ -1,6 +1,6 @@
 package com.vini.movies.domain.use_cases.read_onboarding
 
-import com.vini.movies.domain.repository.Repository
+import com.vini.movies.data.repository.Repository
 import kotlinx.coroutines.flow.Flow
 
 class ReadOnboardingUseCase(private val repository: Repository) {

@@ -1,4 +1,4 @@
-package com.vini.movies.domain.data.local.dao
+package com.vini.movies.data.local.dao
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
@@ -9,7 +9,7 @@ import com.vini.movies.domain.model.Movie
 
 @Dao
 interface MovieDao {
-    @Query("Select * FROM movie_table ORDER BY id ASC")
+    @Query("Select * FROM movie_table")
     fun getAllMovies():PagingSource<Int,Movie>
 
     @Query("Select * FROM movie_table WHERE id=:movieId")
