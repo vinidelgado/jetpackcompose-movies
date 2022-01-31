@@ -10,10 +10,18 @@ import kotlinx.serialization.Serializable
 data class Movie(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
-    val adult: Boolean,
-    val backdrop_path: String? = "",
-    val original_title: String,
-    val popularity: Float,
     val poster_path: String? = "",
-    val title: String,
+    val adult: Boolean,
+    val overview: String? = "",
+    val release_date: String? = "",
+    val original_title: String? = "",
+    val original_language: String? = "",
+    val title: String? = "",
+    val backdrop_path: String? = "",
+    val popularity: Float,
+    val vote_count: Int,
+    val video: Boolean,
+    val vote_average: Float,
 )
+
+

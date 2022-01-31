@@ -6,6 +6,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 
+//NewColors
+val WhiteE5 = Color(0xFFE5E5E5)
+val WhiteF7 = Color(0xFFF7F7F7)
+val BlueOF = Color(0xFF0E2251)
+val Blue17 = Color(0xFF175FC5)
+val Black19 = Color(0xFF191D28)
+val Black07 = Color(0xFF070408)
+
+//OldColors
 val Purple200 = Color(0xFFA970FF)
 val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
@@ -23,6 +32,13 @@ val LightGray = Color(0xFFD8D8D8)
 val ShimmerLightGray = Color(0xFFF1F1F1)
 val ShimmerMediumGray = Color(0xFFE3E3E3)
 val ShimmerDarkGray = Color(0xFF1D1D1D)
+
+val BackgroundWhite = Color(0xFF232534)
+val BackgroundBlack = Color(0xFFF3F9FF)
+
+val Colors.backgroundColor
+    @Composable
+    get() = if (isLight) BackgroundWhite else BackgroundBlack
 
 val Colors.welcomeScreenTitleColor
     @Composable

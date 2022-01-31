@@ -2,11 +2,17 @@ package com.vini.movies.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.vini.movies.R
 
-// Set of Material typography styles to start with
+val PlayFont = FontFamily(
+    Font(R.font.play_regular),
+    Font(R.font.play_bold, FontWeight.Bold)
+)
+
 val Typography = Typography(
     body1 = TextStyle(
         fontFamily = FontFamily.Default,

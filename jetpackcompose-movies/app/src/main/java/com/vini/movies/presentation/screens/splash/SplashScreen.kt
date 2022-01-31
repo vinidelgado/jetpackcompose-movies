@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -29,10 +30,13 @@ import androidx.navigation.NavHostController
 import com.vini.movies.R
 import com.vini.movies.navigation.Screen
 import com.vini.movies.ui.theme.Black700
+import com.vini.movies.ui.theme.Blue17
+import com.vini.movies.ui.theme.BlueOF
 import com.vini.movies.ui.theme.Purple200
 import com.vini.movies.ui.theme.Purple500
 import com.vini.movies.ui.theme.Purple700
 import com.vini.movies.ui.theme.White700
+import com.vini.movies.ui.theme.WhiteE5
 
 @Composable
 fun SplashScreen(
@@ -58,7 +62,7 @@ fun SplashScreen(
         if (onboardingCompleted) {
             navController.navigate(Screen.Home.route)
         } else {
-            navController.navigate(Screen.Welcome.route)
+            navController.navigate(Screen.Home.route)
         }
     }
 
@@ -68,14 +72,14 @@ fun SplashScreen(
 @Composable
 fun Splash(alpha: Float) {
     val background = if (isSystemInDarkTheme()) {
-        Brush.verticalGradient(listOf(Black700, Black700))
+        Brush.verticalGradient(listOf(WhiteE5, WhiteE5))
     } else {
-        Brush.verticalGradient(listOf(Purple700, Purple500))
+        Brush.verticalGradient(listOf(BlueOF, Blue17))
     }
     val logoTint = if (isSystemInDarkTheme()) {
-        Purple200
+        Blue17
     } else {
-        White700
+        WhiteE5
     }
     Box(
         modifier = Modifier
