@@ -42,6 +42,7 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.vini.movies.R
 import com.vini.movies.domain.model.Movie
+import com.vini.movies.ext.toJson
 import com.vini.movies.navigation.Screen
 import com.vini.movies.presentation.screens.components.ShimmerEffect
 import com.vini.movies.ui.theme.Black19
@@ -321,6 +322,7 @@ fun MovieItemPreview() {
     }
 }
 
+@ExperimentalCoilApi
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun MovieItemNightPreview() {

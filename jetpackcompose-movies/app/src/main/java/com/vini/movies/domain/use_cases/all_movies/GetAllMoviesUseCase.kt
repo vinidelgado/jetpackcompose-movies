@@ -9,6 +9,6 @@ class GetAllMoviesUseCase(
     private val repository: Repository
 ) {
     operator fun invoke(): Flow<PagingData<Movie>> {
-        return repository.getAllMovies()
+        return repository.getLatestMovies()
     }
 }

@@ -36,7 +36,7 @@ import com.vini.movies.ui.theme.WhiteF7
 @Composable
 fun HomeScreen(navController: NavHostController, homeViewModel: HomeViewModel = hiltViewModel()) {
 
-    val allMovies = homeViewModel.getAllMovies.collectAsLazyPagingItems()
+    val allMovies = homeViewModel.getLatestMovies.collectAsLazyPagingItems()
     val background = if (isSystemInDarkTheme()) {
         Brush.verticalGradient(listOf(Black07, Black19))
     } else {

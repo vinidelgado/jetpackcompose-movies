@@ -4,4 +4,5 @@
     <string name="topbar_icon_speech">Search icon</string>
     <string name="not_rated">Não avaliado</string>
     <string name="last_release">Próximos lançamentos</string>
+    <string name="overview">Resumo</string>
 </resources>
