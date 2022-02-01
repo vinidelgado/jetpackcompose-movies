@@ -2,4 +2,7 @@
     <string name="app_name">Movies</string>
     <string name="app_logo">TMDB Logo</string>
     <string name="topbar_icon_speech">Search icon</string>
+    <string name="not_rated">Não avaliado</string>
+    <string name="last_release">Próximos lançamentos</string>
+    <string name="overview">Resumo</string>
 </resources>

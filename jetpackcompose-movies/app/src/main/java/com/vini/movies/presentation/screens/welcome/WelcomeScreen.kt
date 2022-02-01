@@ -33,12 +33,14 @@ import com.google.accompanist.pager.rememberPagerState
 import com.vini.movies.R
 import com.vini.movies.domain.model.OnboardingPage
 import com.vini.movies.navigation.Screen
+import com.vini.movies.ui.theme.Black19
 import com.vini.movies.ui.theme.Black300
 import com.vini.movies.ui.theme.EXTRA_LARGE_PADDING
 import com.vini.movies.ui.theme.PAGING_INDICATOR
 import com.vini.movies.ui.theme.PAGING_INDICATOR_SPACE
 import com.vini.movies.ui.theme.SMALL_PADDING
 import com.vini.movies.ui.theme.White300
+import com.vini.movies.ui.theme.WhiteE5
 import com.vini.movies.ui.theme.welcomeScreenActiveIndicatorColor
 import com.vini.movies.ui.theme.welcomeScreenButtonBackgroundColor
 import com.vini.movies.ui.theme.welcomeScreenButtonTextColor
@@ -61,9 +63,9 @@ fun WelcomeScreen(
     )
     val pageState = rememberPagerState()
     val background = if (isSystemInDarkTheme()) {
-        White300
+        WhiteE5
     } else {
-        Black300
+        Black19
     }
     Column(
         modifier = Modifier
