@@ -5,5 +5,5 @@ import com.vini.movies.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface RemoteDataSource {
-    fun getAllMovies(): Flow<PagingData<Movie>>
+    fun getLatestMovies(): Flow<PagingData<Movie>>
 }

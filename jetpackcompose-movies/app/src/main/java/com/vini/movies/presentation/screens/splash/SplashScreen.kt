@@ -27,7 +27,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.google.gson.Gson
 import com.vini.movies.R
+import com.vini.movies.domain.model.Movie
+import com.vini.movies.ext.toJson
 import com.vini.movies.navigation.Screen
 import com.vini.movies.ui.theme.Black700
 import com.vini.movies.ui.theme.Blue17
@@ -71,15 +74,15 @@ fun SplashScreen(
 
 @Composable
 fun Splash(alpha: Float) {
-    val background = if (isSystemInDarkTheme()) {
-        Brush.verticalGradient(listOf(WhiteE5, WhiteE5))
-    } else {
-        Brush.verticalGradient(listOf(BlueOF, Blue17))
-    }
     val logoTint = if (isSystemInDarkTheme()) {
-        Blue17
-    } else {
         WhiteE5
+    } else {
+        Blue17
+    }
+    val background = if (isSystemInDarkTheme()) {
+        Brush.verticalGradient(listOf(BlueOF, Blue17))
+    } else {
+        Brush.verticalGradient(listOf(WhiteE5, WhiteE5))
     }
     Box(
         modifier = Modifier

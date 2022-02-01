@@ -4,7 +4,9 @@ import androidx.paging.ExperimentalPagingApi
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.vini.movies.data.local.MovieDatabase
 import com.vini.movies.data.remote.TmdbApi
-import com.vini.movies.data.repository.RemotedataSourceImpl
+import com.vini.movies.data.repository.LocalDataSourceImpl
+import com.vini.movies.data.repository.RemoteDataSourceImpl
+import com.vini.movies.domain.repository.LocalDataSource
 import com.vini.movies.domain.repository.RemoteDataSource
 import com.vini.movies.util.Constants.BASE_URL
 import dagger.Module
@@ -41,7 +43,9 @@ object NetworkModule {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(Json { ignoreUnknownKeys = true }.asConverterFactory(contentType = contentType))
+            .addConverterFactory(Json {
+                ignoreUnknownKeys = true
+            }.asConverterFactory(contentType = contentType))
             .build()
     }
 
@@ -57,7 +61,15 @@ object NetworkModule {
         tmdbApi: TmdbApi,
         movieDatabase: MovieDatabase
     ): RemoteDataSource {
-        return RemotedataSourceImpl(tmdbApi = tmdbApi, movieDatabase = movieDatabase)
+        return RemoteDataSourceImpl(tmdbApi = tmdbApi, movieDatabase = movieDatabase)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocalDataSource(
+        movieDatabase: MovieDatabase
+    ): LocalDataSource {
+        return LocalDataSourceImpl(movieDatabase = movieDatabase)
     }
 
 }

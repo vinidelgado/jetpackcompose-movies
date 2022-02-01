@@ -1,6 +1,5 @@
 package com.vini.movies.data.paggingsource
 
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -10,11 +9,10 @@ import com.vini.movies.data.local.MovieDatabase
 import com.vini.movies.data.remote.TmdbApi
 import com.vini.movies.domain.model.Movie
 import com.vini.movies.domain.model.MovieRemoteKeys
-import java.lang.Exception
 import javax.inject.Inject
 
 @ExperimentalPagingApi
-class MovieRemoteMediator @Inject constructor(
+class MovieLatestRemoteMediator @Inject constructor(
     private val movieApi: TmdbApi,
     private val movieDatabase: MovieDatabase
 ) : RemoteMediator<Int, Movie>() {

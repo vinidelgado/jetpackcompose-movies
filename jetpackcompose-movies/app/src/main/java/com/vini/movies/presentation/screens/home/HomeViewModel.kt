@@ -7,5 +7,5 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(useCases: UseCases) : ViewModel() {
-    val getAllMovies = useCases.getAllMoviesUseCase()
+    val getLatestMovies = useCases.getAllMoviesUseCase()
 }
