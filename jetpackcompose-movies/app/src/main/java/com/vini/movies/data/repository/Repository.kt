@@ -1,6 +1,7 @@
 package com.vini.movies.data.repository
 
 import androidx.paging.PagingData
+import com.vini.movies.domain.model.Genre
 import com.vini.movies.domain.model.Movie
 import com.vini.movies.domain.repository.DataStoreOperations
 import com.vini.movies.domain.repository.LocalDataSource
@@ -28,5 +29,9 @@ class Repository @Inject constructor(
 
     suspend fun getSelectedMovie(movieId: Int): Movie {
         return local.getSelectedMovie(movieId = movieId)
+    }
+
+    suspend fun saveMovieGenre(genres:List<Genre>){
+        local.saveMovieGenres(list = genres)
     }
 }

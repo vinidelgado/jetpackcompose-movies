@@ -89,11 +89,6 @@ fun MovieDataSection(movie: Movie) {
 @ExperimentalCoilApi
 @Composable
 fun PosterSection(movie: Movie) {
-//    val background = if (isSystemInDarkTheme()) {
-//        Brush.verticalGradient(listOf(Color.Transparent, Black07))
-//    } else {
-//        Brush.verticalGradient(listOf(Color.Transparent, WhiteF7))
-//    }
     val background = painterResource(id = R.drawable.ic_rect)
     Box(
         modifier = Modifier
