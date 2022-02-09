@@ -1,6 +1,7 @@
 package com.vini.movies.domain.model
 
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.vini.movies.util.Constants.MOVIE_DATABASE_TABLE
 import kotlinx.serialization.Serializable
@@ -10,18 +11,19 @@ import kotlinx.serialization.Serializable
 data class Movie(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
-    val poster_path: String? = "",
+    val posterPath: String? = "",
+    val genres: String? = "",
     val adult: Boolean,
     val overview: String? = "",
-    val release_date: String? = "",
-    val original_title: String? = "",
-    val original_language: String? = "",
+    val releaseDate: String? = "",
+    val originalTitle: String? = "",
+    val originalLanguage: String? = "",
     val title: String? = "",
-    val backdrop_path: String? = "",
+    val backdropPath: String? = "",
     val popularity: Float,
     val vote_count: Int,
     val video: Boolean,
-    val vote_average: Float,
+    val voteAverage: Float,
 )
 
 

@@ -42,7 +42,6 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.vini.movies.R
 import com.vini.movies.domain.model.Movie
-import com.vini.movies.ext.toJson
 import com.vini.movies.navigation.Screen
 import com.vini.movies.presentation.screens.components.ShimmerEffect
 import com.vini.movies.ui.theme.Black19
@@ -118,7 +117,7 @@ fun MovieItem(
     navController: NavHostController
 ) {
     val painter =
-        rememberImagePainter(data = "https://image.tmdb.org/t/p/w200${movie.poster_path}") {
+        rememberImagePainter(data = "https://image.tmdb.org/t/p/w200${movie.posterPath}") {
             placeholder(R.drawable.ic_placeholder)
             error(R.drawable.ic_placeholder)
         }
@@ -156,7 +155,7 @@ fun MovieItem(
             ) {
                 FavoriteSection(movie = movie)
                 MovieNameSection(movie = movie)
-                movie.release_date?.let {
+                movie.releaseDate?.let {
                     Spacer(
                         modifier = Modifier
                             .height(EXTRA_SMALLEST_PADDING)
@@ -193,8 +192,8 @@ fun ReleaseDateSection(movie: Movie) {
             modifier = Modifier
                 .width(EXTRA_SMALLEST_PADDING)
         )
-        val year = movie.release_date?.substring(0, 4) ?: ""
-        val month = movie.release_date?.substring(5, 7) ?: ""
+        val year = movie.releaseDate?.substring(0, 4) ?: ""
+        val month = movie.releaseDate?.substring(5, 7) ?: ""
         val dateFormatted = "$year/$month"
         Text(
             text = dateFormatted,
@@ -252,10 +251,10 @@ fun FavoriteSection(movie: Movie) {
             modifier = Modifier
                 .width(EXTRA_SMALLEST_PADDING)
         )
-        val textMovie = if (movie.vote_average <= 0f) {
+        val textMovie = if (movie.voteAverage <= 0f) {
             stringResource(id = R.string.not_rated)
         } else {
-            movie.vote_average.toString()
+            movie.voteAverage.toString()
         }
         Text(
             text = textMovie,
@@ -279,18 +278,18 @@ fun ReleaseSectionPreview() {
         ReleaseDateSection(
             Movie(
                 id = 283552,
-                poster_path = "/pEFRzXtLmxYNjGd0XqJDHPDFKB2.jpg",
+                posterPath = "/pEFRzXtLmxYNjGd0XqJDHPDFKB2.jpg",
                 adult = false,
                 overview = "A lighthouse keeper and his wife living off the coast of Western Australia raise a baby they rescue from an adrift rowboat.",
-                release_date = "2016-09-02",
-                original_title = "The Light Between Oceans",
-                original_language = "en",
+                releaseDate = "2016-09-02",
+                originalTitle = "The Light Between Oceans",
+                originalLanguage = "en",
                 title = "The Light Between Oceans",
-                backdrop_path = "/2Ah63TIvVmZM3hzUwR5hXFg2LEk.jpg",
+                backdropPath = "/2Ah63TIvVmZM3hzUwR5hXFg2LEk.jpg",
                 popularity = 4.546151f,
                 vote_count = 11,
                 video = false,
-                vote_average = 4.41f
+                voteAverage = 4.41f
             )
         )
     }
@@ -304,18 +303,18 @@ fun MovieItemPreview() {
         MovieItem(
             Movie(
                 id = 283552,
-                poster_path = "/pEFRzXtLmxYNjGd0XqJDHPDFKB2.jpg",
+                posterPath = "/pEFRzXtLmxYNjGd0XqJDHPDFKB2.jpg",
                 adult = false,
                 overview = "A lighthouse keeper and his wife living off the coast of Western Australia raise a baby they rescue from an adrift rowboat.",
-                release_date = "2016-09-02",
-                original_title = "The Light Between Oceans",
-                original_language = "en",
+                releaseDate = "2016-09-02",
+                originalTitle = "The Light Between Oceans",
+                originalLanguage = "en",
                 title = "The Light Between Oceans",
-                backdrop_path = "/2Ah63TIvVmZM3hzUwR5hXFg2LEk.jpg",
+                backdropPath = "/2Ah63TIvVmZM3hzUwR5hXFg2LEk.jpg",
                 popularity = 4.546151f,
                 vote_count = 11,
                 video = false,
-                vote_average = 4.41f
+                voteAverage = 4.41f
             ),
             navController = rememberNavController()
         )
@@ -330,18 +329,18 @@ fun MovieItemNightPreview() {
         MovieItem(
             Movie(
                 id = 283552,
-                poster_path = "/pEFRzXtLmxYNjGd0XqJDHPDFKB2.jpg",
+                posterPath = "/pEFRzXtLmxYNjGd0XqJDHPDFKB2.jpg",
                 adult = false,
                 overview = "A lighthouse keeper and his wife living off the coast of Western Australia raise a baby they rescue from an adrift rowboat.",
-                release_date = "2016-09-02",
-                original_title = "The Light Between Oceans",
-                original_language = "en",
+                releaseDate = "2016-09-02",
+                originalTitle = "The Light Between Oceans",
+                originalLanguage = "en",
                 title = "The Light Between Oceans",
-                backdrop_path = "/2Ah63TIvVmZM3hzUwR5hXFg2LEk.jpg",
+                backdropPath = "/2Ah63TIvVmZM3hzUwR5hXFg2LEk.jpg",
                 popularity = 4.546151f,
                 vote_count = 11,
                 video = false,
-                vote_average = 4.41f
+                voteAverage = 4.41f
             ),
             navController = rememberNavController()
         )

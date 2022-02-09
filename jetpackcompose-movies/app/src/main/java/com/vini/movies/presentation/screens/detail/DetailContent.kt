@@ -37,7 +37,6 @@ import com.vini.movies.ui.theme.Black19
 import com.vini.movies.ui.theme.LARGE_PADDING
 import com.vini.movies.ui.theme.MEDIUM_PADDING
 import com.vini.movies.ui.theme.PlayFont
-import com.vini.movies.ui.theme.SMALL_PADDING
 import com.vini.movies.ui.theme.WhiteE5
 
 @ExperimentalCoilApi
@@ -65,7 +64,7 @@ fun MovieDataSection(movie: Movie) {
     ) {
         Spacer(modifier = Modifier.height(LARGE_PADDING))
         Text(
-            text = stringResource(id = R.string.last_release),
+            text = stringResource(id = R.string.overview),
             color = textColor,
             fontFamily = PlayFont,
             fontSize = MaterialTheme.typography.h6.fontSize,
@@ -103,7 +102,7 @@ fun PosterSection(movie: Movie) {
         contentAlignment = Alignment.BottomCenter
     ) {
         val painter =
-            rememberImagePainter(data = "https://image.tmdb.org/t/p/original${movie.poster_path}") {
+            rememberImagePainter(data = "https://image.tmdb.org/t/p/original${movie.posterPath}") {
                 placeholder(R.drawable.ic_placeholder)
                 error(R.drawable.ic_placeholder)
             }
