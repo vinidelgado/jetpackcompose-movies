@@ -17,4 +17,8 @@ class LocalDataSourceImpl(movieDatabase: MovieDatabase) : LocalDataSource {
     override suspend fun saveMovieGenres(list: List<Genre>) {
         genreDao.addGenre(list)
     }
+
+    override suspend fun getMovieGenres(list: List<Int>):List<Genre> {
+        return genreDao.getMovieGenres(list)
+    }
 }

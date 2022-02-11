@@ -31,7 +31,11 @@ class Repository @Inject constructor(
         return local.getSelectedMovie(movieId = movieId)
     }
 
-    suspend fun saveMovieGenre(genres:List<Genre>){
+    suspend fun saveMovieGenre(genres: List<Genre>) {
         local.saveMovieGenres(list = genres)
+    }
+
+    suspend fun getMovieGenres(genresId: List<Int>): List<Genre> {
+        return local.getMovieGenres(genresId)
     }
 }

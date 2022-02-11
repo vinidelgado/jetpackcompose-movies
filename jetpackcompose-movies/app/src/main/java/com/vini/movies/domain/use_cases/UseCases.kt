@@ -1,5 +1,6 @@
 package com.vini.movies.domain.use_cases
 
+import com.vini.movies.domain.use_cases.all_genres.GetAllMovieGenresUseCase
 import com.vini.movies.domain.use_cases.all_movies.GetAllMoviesUseCase
 import com.vini.movies.domain.use_cases.read_onboarding.ReadOnboardingUseCase
 import com.vini.movies.domain.use_cases.save_genre.SaveMovieGenreUseCase
@@ -12,4 +13,5 @@ data class UseCases(
     val getAllMoviesUseCase: GetAllMoviesUseCase,
     val getSelectedMovieUseCase: GetSelectedMovieUseCase,
     val saveMovieGenreUseCase: SaveMovieGenreUseCase,
+    val getMovieGenresUseCase:GetAllMovieGenresUseCase
 )

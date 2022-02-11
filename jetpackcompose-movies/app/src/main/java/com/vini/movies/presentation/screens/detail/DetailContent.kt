@@ -6,12 +6,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Surface
@@ -31,7 +33,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
+import com.google.android.material.chip.Chip
 import com.vini.movies.R
+import com.vini.movies.domain.model.Genre
 import com.vini.movies.domain.model.Movie
 import com.vini.movies.ui.theme.Black19
 import com.vini.movies.ui.theme.LARGE_PADDING
@@ -41,12 +45,72 @@ import com.vini.movies.ui.theme.WhiteE5
 
 @ExperimentalCoilApi
 @Composable
-fun DetailContent(navController: NavController, movie: Movie?) {
+fun DetailContent(
+    navController: NavController,
+    movie: Movie?,
+    movieGenres: List<Genre>?,
+    detailsViewModel: DetailsViewModel
+) {
     movie?.let {
+        if (!it.genres.isNullOrEmpty()) {
+            detailsViewModel.getMovieGenres(it.genres)
+        }
+
         Column(modifier = Modifier.fillMaxSize()) {
             PosterSection(movie)
+            movieGenres?.let { list ->
+                if (!list.isNullOrEmpty()) {
+                    MovieGenreDataSection(movieGenres = list)
+                }
+            }
             MovieDataSection(movie)
         }
+    }
+}
+
+@Composable
+fun MovieGenreDataSection(movieGenres: List<Genre>) {
+    val textColor = if (isSystemInDarkTheme()) {
+        WhiteE5
+    } else {
+        Black19
+    }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .background(Color.Transparent)
+    ) {
+        Spacer(modifier = Modifier.height(LARGE_PADDING))
+        Text(
+            text = stringResource(id = R.string.genre),
+            color = textColor,
+            fontFamily = PlayFont,
+            fontSize = MaterialTheme.typography.h6.fontSize,
+            fontWeight = FontWeight.Bold,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(start = MEDIUM_PADDING, end = MEDIUM_PADDING)
+        )
+        Spacer(modifier = Modifier.height(MEDIUM_PADDING))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+        ) {
+            repeat(movieGenres.size) {
+                Text(
+                    modifier = Modifier.padding(start = MEDIUM_PADDING, end = MEDIUM_PADDING),
+                    text = movieGenres[it].name ?: "",
+                    fontFamily = PlayFont,
+                    lineHeight = 20.sp, color = textColor.copy(alpha = ContentAlpha.medium),
+                    fontSize = MaterialTheme.typography.subtitle2.fontSize,
+                    maxLines = 8,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+        }
+
     }
 }
 
@@ -59,7 +123,8 @@ fun MovieDataSection(movie: Movie) {
     }
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
+            .wrapContentHeight()
             .background(Color.Transparent)
     ) {
         Spacer(modifier = Modifier.height(LARGE_PADDING))
