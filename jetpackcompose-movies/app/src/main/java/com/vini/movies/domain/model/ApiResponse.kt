@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ApiResponse(
     val page: Int,
-    val results:List<Movie> = emptyList(),
+    val results:List<MovieResponse> = emptyList(),
     val total_results:Int = 0,
     val total_pages: Int = 0,
 )

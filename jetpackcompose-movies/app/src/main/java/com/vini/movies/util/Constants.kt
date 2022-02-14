@@ -4,6 +4,7 @@ object Constants {
     const val DETAILS_ARGUMENT_KEY = "movieId"
     const val MOVIE_DATABASE = "movie_database"
     const val MOVIE_DATABASE_TABLE = "movie_table"
+    const val GENRE_DATABASE_TABLE = "genre_table"
     const val MOVIE_REMOTE_KEYS_DATABASE_TABLE = "movie_remote_keys_table"
 
     const val PREFERENCES_NAME = "movies_preferences"

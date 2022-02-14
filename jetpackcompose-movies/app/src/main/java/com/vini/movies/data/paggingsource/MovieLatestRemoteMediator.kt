@@ -66,7 +66,29 @@ class MovieLatestRemoteMediator @Inject constructor(
                         )
                     }
                     movieRemoteKeysDao.addAllRemoteKeys(keys)
-                    movieDao.addMovie(movies = response.results)
+                    var list = ArrayList<Movie>()
+                    response.results.forEach { movie ->
+                        list.add(
+                            Movie(
+                                id = movie.id,
+                                posterPath = movie.poster_path,
+                                genres = movie.genre_ids?.joinToString(","),
+                                adult = movie.adult,
+                                overview = movie.overview,
+                                releaseDate = movie.release_date,
+                                originalTitle = movie.original_title,
+                                originalLanguage = movie.original_language,
+                                title = movie.title,
+                                backdropPath = movie.backdrop_path,
+                                popularity = movie.popularity,
+                                vote_count = movie.vote_count,
+                                video = movie.video,
+                                voteAverage = movie.vote_average,
+                            )
+                        )
+                    }
+
+                    movieDao.addMovie(movies = list)
                 }
             }
             val endPaginationReached = response.page >= response.total_pages - 1

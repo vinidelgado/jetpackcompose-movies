@@ -5,8 +5,10 @@ import com.vini.movies.data.repository.DataStoreOperationsImpl
 import com.vini.movies.data.repository.Repository
 import com.vini.movies.domain.repository.DataStoreOperations
 import com.vini.movies.domain.use_cases.UseCases
+import com.vini.movies.domain.use_cases.all_genres.GetAllMovieGenresUseCase
 import com.vini.movies.domain.use_cases.all_movies.GetAllMoviesUseCase
 import com.vini.movies.domain.use_cases.read_onboarding.ReadOnboardingUseCase
+import com.vini.movies.domain.use_cases.save_genre.SaveMovieGenreUseCase
 import com.vini.movies.domain.use_cases.save_onboarding.SaveOnboardingUseCase
 import com.vini.movies.domain.use_cases.selected_movie.GetSelectedMovieUseCase
 import dagger.Module
@@ -33,6 +35,8 @@ object RepositoryModule {
             readOnboardingUseCase = ReadOnboardingUseCase(repository = repository),
             getAllMoviesUseCase = GetAllMoviesUseCase(repository = repository),
             getSelectedMovieUseCase = GetSelectedMovieUseCase(repository = repository),
+            saveMovieGenreUseCase = SaveMovieGenreUseCase(repository = repository),
+            getMovieGenresUseCase = GetAllMovieGenresUseCase(repository = repository)
         )
     }
 }
